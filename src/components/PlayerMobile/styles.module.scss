@@ -75,6 +75,10 @@
     &.empty .progress {
       opacity: 0.5;
     }
+
+    @media (max-width: 360px) {
+      margin-left: 0.5rem;
+    }
   }
 }
 
@@ -135,6 +139,12 @@
   justify-content: center;
   margin-top: 0.5rem;
   gap: 1.5rem;
+
+  @media (max-width: 360px) {
+    gap: 0.75rem;
+    width: 90%;
+    height: 90%;
+  }
 
   button {
     background: transparent;

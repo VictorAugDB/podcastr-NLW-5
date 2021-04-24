@@ -1,6 +1,6 @@
 import format from 'date-fns/format'
 import ptBR from 'date-fns/locale/pt-BR'
-import { useContext, useState } from 'react'
+import { useContext } from 'react'
 import { DARK_THEME, DEFAULT_THEME, ThemeContext } from '../../contexts/ThemeContext'
 
 import styles from './styles.module.scss'
