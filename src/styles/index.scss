@@ -1,0 +1,15 @@
+@import "./default.scss";
+@import "./dark.scss";
+
+$themes: (
+  default: $default,
+  dark: $dark,
+);
+
+@mixin themify($property, $key) {
+  @each $theme, $color in $themes {
+    &.#{$theme} {
+      #{$property}: map-get($color, $key);
+    }
+  }
+}

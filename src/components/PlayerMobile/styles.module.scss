@@ -1,0 +1,176 @@
+@import "../../styles/index.scss";
+
+.playerMobileContainer {
+  @keyframes textAnimation {
+    0% {
+      right: 800px;
+    }
+    100% {
+      right: -1200px;
+    }
+  }
+
+  width: 100%;
+  height: 7rem;
+
+  display: flex;
+  position: fixed;
+
+  bottom: 0;
+
+  align-items: center;
+
+  @include themify("background", "purple_background");
+  color: var(--white);
+
+  .animatedContainer {
+    position: absolute;
+    top: -17.6px;
+    height: 17.6px;
+    width: 100%;
+    background: rgba(174, 112, 255, 0.45);
+
+    span {
+      display: flex;
+      align-items: center;
+      position: absolute;
+
+      color: var(--gray-500);
+      white-space: nowrap;
+
+      animation: textAnimation 30s infinite;
+      animation-timing-function: ease-out;
+
+      strong {
+        color: var(--gray-800);
+      }
+
+      p {
+        margin-left: 0.5rem;
+      }
+    }
+  }
+
+  header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  strong {
+    font-family: Lexend, sans-serif;
+    font-weight: 600;
+  }
+
+  footer {
+    align-self: stretch;
+    margin-left: 2rem;
+
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    &.empty .progress {
+      opacity: 0.5;
+    }
+  }
+}
+
+.currentEpisode {
+  display: flex;
+  align-items: center;
+
+  img {
+    width: 98px;
+    height: 98px;
+  }
+}
+
+.emptyPlayer {
+  width: 80px;
+  height: 80px;
+
+  background: linear-gradient(143.8deg, rgba(145, 100, 250, 0.8) 0%, rgba(0, 0, 0, 0.025) 100%);
+
+  padding: 3.5rem;
+  text-align: center;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.progress {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+
+  span {
+    display: inline-block;
+    width: 4rem;
+    text-align: center;
+  }
+
+  .slider {
+    flex: 1;
+
+    -ms-touch-action: none;
+    touch-action: none;
+
+    .emptySlider {
+      width: 100%;
+      height: 4px;
+      background: var(--purple-300);
+      border-radius: 2px;
+    }
+  }
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.5rem;
+  gap: 1.5rem;
+
+  button {
+    background: transparent;
+    border: 0;
+    font-size: 0;
+
+    transition: filter 0.2s;
+
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+
+    &:hover:not(:disabled) {
+      filter: brightness(0.85);
+    }
+
+    &.isActive {
+      filter: invert(0.35) sepia(1) saturate(3) hue-rotate(100deg);
+
+      &:hover {
+        filter: brightness(0.6) invert(0.35) sepia(1) saturate(3) hue-rotate(100deg);
+      }
+    }
+
+    &.playButton {
+      width: 4rem;
+      height: 4rem;
+      border-radius: 1rem;
+      background: var(--purple-400);
+
+      transition: filter 0.2s;
+
+      &:hover:not(:disabled) {
+        filter: brightness(0.95);
+      }
+    }
+  }
+}

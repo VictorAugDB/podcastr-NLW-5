@@ -1,0 +1,88 @@
+@import "../../styles/index.scss";
+
+.headerContainer {
+  @keyframes switchAnimation {
+    0% {
+      left: 0;
+    }
+    100% {
+      left: 23px;
+    }
+  }
+
+  @include themify("background", "primary");
+  height: 6.5rem;
+
+  @include themify("color", "secondary");
+
+  display: flex;
+  align-items: center;
+
+  padding: 2rem 4rem;
+
+  border-bottom: 1px solid var(--gray-100);
+
+  p {
+    margin-left: 2rem;
+    padding: 0.25rem 0 0.25rem 2rem;
+    border-left: 1px solid var(--gray-100);
+
+    @media (max-width: 720px) {
+      display: none;
+    }
+  }
+
+  button {
+    width: 45px;
+    height: 20px;
+    border: 0;
+    border-radius: 2rem;
+    position: relative;
+
+    margin: 0 auto;
+  }
+
+  .isNotActive {
+    background: #41414d;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: -1px;
+      top: -1px;
+
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #fff;
+
+      animation: switchAnimation 0.1s;
+      animation-timing-function: ease-out;
+      animation-direction: reverse;
+    }
+  }
+
+  .isActive {
+    background: #3636f3;
+
+    &::after {
+      content: "";
+      position: absolute;
+      right: -1px;
+      top: -1px;
+
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #41414d;
+
+      animation: switchAnimation 0.1s;
+      animation-timing-function: ease-out;
+    }
+  }
+
+  span {
+    margin-left: auto;
+    text-transform: capitalize;
+  }
+}
