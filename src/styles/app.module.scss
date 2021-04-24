@@ -2,6 +2,7 @@
 
 .wrapper {
   display: flex;
+  height: 100%;
 
   @media (max-width: 720px) {
     flex-direction: column;
