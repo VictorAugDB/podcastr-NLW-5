@@ -6,8 +6,8 @@ import { PlayerMobile } from '../components/PlayerMobile'
 
 import styles from '../styles/app.module.scss'
 import { PlayerContextProvider } from '../contexts/PlayerContext'
-import React, { useContext } from 'react'
-import { ThemeContext, ThemeContextParent } from '../contexts/ThemeContext'
+import React from 'react'
+import { ThemeContextParent } from '../contexts/ThemeContext'
 
 function MyApp({ Component, pageProps }) {
   return (

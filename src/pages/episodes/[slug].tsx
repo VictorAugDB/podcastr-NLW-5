@@ -5,11 +5,14 @@ import Head from 'next/head'
 
 import { format, parseISO } from 'date-fns'
 import ptBR from 'date-fns/locale/pt-BR'
-import { api } from '../../services/api'
+// import { api } from '../../services/api'
+import server from '../../../server.json'
+
 import { convertDurationToTimeString } from '../../utils/convertDurationToTimeString'
 
 import styles from './episode.module.scss'
 import { usePlayer } from '../../contexts/PlayerContext'
+import axios from 'axios'
 
 type Episode = {
   id: string;
@@ -68,13 +71,15 @@ export default function Episode({ episode }: EpisodeProps) {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const { data } = await api.get('getPodcastEpisodes', {
-    params: {
-      _limit: 3,
-      _sort: 'published_at',
-      _order: 'desc'
-    }
-  })
+  // const { data } = await axios.get('http://localhost:3000/api/getPodcastEpisodes', {
+  //   params: {
+  //     _limit: 3,
+  //     _sort: 'published_at',
+  //     _order: 'desc'
+  //   }
+  // })
+
+  const data = server.episodes;
 
   const paths = data.map(episode => ({
     params: {
@@ -91,7 +96,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async (ctx) => {
   const { slug } = ctx.params;
 
-  const { data } = await api.get(`getPodcastEpisodes?slug=${slug}`)
+  // const { data } = await axios.get(`http://localhost:3000/api/getPodcastEpisodes?slug=${slug}`)
+
+  const data = server.episodes.find(episode => episode.id === slug)
 
   const episode = {
     id: data.id,
